@@ -1,0 +1,71 @@
+﻿@using XeMayShop.Models
+@{
+    ViewBag.Title = "DatXe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Xe xe = Session["Xe"] as Xe;
+
+}
+
+
+@using (Html.BeginForm("HoanThanhDatXe", "DatXe"))
+{
+    @Html.AntiForgeryToken()
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <h3 style="margin-bottom:50px">Đặt xe</h3>
+            <form action="#" class="checkout__form">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="checkout__form__input">
+                                    <p>Họ tên khách hàng</p>
+                                    <input type="text" name="TenKH" placeholder="Tên khách hàng">
+                                </div>
+                                <div class="checkout__form__input">
+                                    <p>Số điện thoại</p>
+                                    <input type="text" name="SDT" placeholder="Số điện thoại">
+                                </div>
+                                @if (ViewBag.ErrorInfo != null)
+                                {
+                                    <p class="text-danger">@ViewBag.ErrorInfo</p>
+                                }
+                                <button type="submit" value="Đặt hàng" class="site-btn" style="width:80%;margin-left:10%;margin-top:30px">Đặt hàng</button>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__order">
+
+                            @{
+                                var base643 = Convert.ToBase64String(xe.HinhAnh);
+                                var imgSrc3 = String.Format("data:image/gif;base64,{0}", base643);
+                            }
+                            <img src='@imgSrc3' />
+
+
+
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </form>
+        </div>
+    </section>
+    <!-- Checkout Section End -->
+
+}
+
+
+<style>
+    input {
+        padding: 3px 355px 3px 3px;
+        color: black;
+        margin-bottom: 5px;
+    }
+</style>

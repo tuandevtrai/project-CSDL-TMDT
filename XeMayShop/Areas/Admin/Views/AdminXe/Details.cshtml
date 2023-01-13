@@ -1,0 +1,79 @@
+﻿@model XeMayShop.Models.Xe
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết mặt hàng</h4>
+
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Mã xe</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.MaXe)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên xe</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TenXe)
+                    </div>
+                </div>               
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Dòng xe</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.DongXe.TenDongXe)
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Năm sản xuất</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NamSanXuat)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Thông tin bảo hàng</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ThongTinBaoHanh)
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Giá xe</label>
+                    <div class="col-sm-9 money">
+                        @Html.DisplayFor(model => model.GiaXe) VND
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số lượng hiện có</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.SoLuongHienCo)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Hình ảnh</label>
+                    <div class="col-sm-9">
+                        @{
+                            var base641 = Convert.ToBase64String(Model.HinhAnh);
+                            var imgSrc1 = String.Format("data:image/gif;base64,{0}", base641);
+                        }
+                        <img src='@imgSrc1' style="width: 100px; height: 150px; border-radius:0%" />
+                    </div>
+                </div>                
+                <a href="~/Admin/AdminXe/Edit/@Model.MaXe">
+                    <button style="width:100px; type="submit" class="btn btn-primary mr-2">Edit</button>
+
+                </a>
+                <a href="~/Admin/AdminXe/Index">
+                    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model XeMayShop.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết Admin </h4>
+
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Mã Admin</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.MaAdmin)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên admin</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TenAdmin)
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Tên đăng nhập</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TenDangNhap)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Mật khẩu</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.MaAdmin)
+                    </div>
+                </div>
+                <a href="~/Admin/Admins/Index">
+                    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

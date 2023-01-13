@@ -1,0 +1,76 @@
+﻿@model IEnumerable<XeMayShop.Models.DongXe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Danh sách các dòng xe có trong cửa hàng</h2>
+
+            <a href="~/Admin/AdminDongXe/Create">
+                <button type="button" class="btn btn-primary btn-fw">Tạo dòng xe mới</button>
+            </a>
+
+          
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="color:white">
+                                Mã dòng xe
+                            </th>
+                            <th style="color:white">
+                                Tên dòng xe
+                            </th>
+                            <th style="color:white">
+                                Loại xe
+                            </th>
+                            <th style="color:white">
+                                Số lượng hiện có
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaDongXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDongXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuongHienCo)
+                                </td>
+
+                                <td>
+                                    <a href="~/Admin/AdminDongXe/Details/@item.MaDongXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                    </a>
+                                    <a href="~/Admin/AdminDongXe/Edit/@item.MaDongXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                    </a>
+                                    <a href="~/Admin/AdminDongXe/Delete/@item.MaDongXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

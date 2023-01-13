@@ -1,0 +1,64 @@
+﻿@model XeMayShop.Models.Xe
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+
+
+                @{
+                    var base64 = Convert.ToBase64String(Model.HinhAnh);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                }
+                <img src='@imgSrc' width="300px" height="300px" alt="Alternate Text" />
+
+
+
+
+            </div>
+            <div class="col-lg-6">
+                <div class="product__details__text">
+                    <h3>@Model.TenXe </h3>
+
+                    <div class="product__details__price money" style="font-size:22px">Giá: @Model.GiaXe VND </div>
+                    <p>
+                        Màu xe: @Model.MauXe
+                    </p>
+                    <div class="product__details__button">
+
+                        <a href="~/DatXe/DatXe/@Model.MaXe" class="cart-btn"><span class="icon_bag_alt"></span>  Đặt xe</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="product__details__tab">
+                    <div style="background-color:black;height:2px; margin-bottom:30px"><p>.</p></div>
+                    <h3 style="text-align: center; font-style: unset; margin-bottom: 30px">Mô tả sản phẩm</h3>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+
+                            <p>
+                                Trọng lượng: @Model.TrongLuong
+                            </p>
+                            <p>
+                                Năm sản xuất: @Model.NamSanXuat
+                            </p>
+                            <p>
+                                Thông tin bảo hành: @Model.ThongTinBaoHanh
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->

@@ -1,0 +1,46 @@
+﻿@model XeMayShop.Models.ChiTietPhieuNhap
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm(Html.BeginForm("Edit", "AdminChiTietPhieuNhap", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Bạn muốn chỉnh sửa thông tin chi tiết phiếu nhập này</h4>
+
+                <form class="forms-sample">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.MaPhieuNhap)
+                    @Html.HiddenFor(model => model.MaXe)
+
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số lượng</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.SoLuongNhap, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoLuongNhap, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Đơn giá</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.DonGiaNhap, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DonGiaNhap, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <button style="width:100px; type="submit" value="Save" class="btn btn-primary mr-2">Save</button>
+                    <a href="~/Admin/AdminChiTietPhieuNhap/Index">
+                        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+}

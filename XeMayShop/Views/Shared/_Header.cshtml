@@ -1,0 +1,100 @@
+﻿@using XeMayShop.Models;
+@{
+    KhachHang khachhang = Session["KhachHang"] as KhachHang;
+}
+<header class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-2 col-lg-2">
+                <div class="header__logo">
+                    <a href="~/Home/Index">
+                        <img src="~/Images/delivery.png" width="40px" style="display:inline-block; padding-right:10px;margin-left:30px" />
+                        @*<img src="~/Images/desktop-computer.png"  />*@
+                        <h4 style="font-style:initial ;display:inline-block">Shop xe máy</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-6">
+                <nav class="header__menu" style="margin-left:200px">
+                    <ul style="text-align:center">
+                        <li><a href="~/Home/index">Trang chủ</a></li>
+                        <li><a href="~/Shop/Index">Các sản phẩm</a></li>
+                        <li><a href="~/TimKiemPhieuDatXe/Index">Tìm kiếm đơn đặt hàng</a></li>
+                        @*<li><a href="~/GioHang/show">Kiểm tra tình trạng bảo hành</a></li>*@
+
+                        @*<li>
+                        <a href="#">Các đơn hàng</a>
+                        <ul class="dropdown" style="width:max-content">
+                            <li><a href="~/ThongBao/CacDonHangDangCho">Đơn hàng đang chờ</a></li>
+                            <li><a href="~/ThongBao/TatCaCacDonHang">Tất cả các đơn hàng</a></li>
+                            <li><a href="~/ThongBao/CacMatHangDaMua">Các mặt hàng đã đặt</a></li>
+                            <li><a href="~/ThongBao/CacMatHangDaMua">Các mặt hàng đã đặt</a></li>
+                        </ul>
+                    </li>*@
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-xl-2 col-lg-2">
+                <div class="header__logo">                    
+                </div>
+            </div>
+        </div>
+        <div class="canvas__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+
+<style>
+    /* Dropdown Button */
+    .dropbtn {
+
+        background-image : url('@Url.Content("~/Images/user.png")');
+
+        background-color:white;
+        font-size: 12px;
+        border: none;
+       width:30px;
+       height:30px;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {
+                background-color: floralwhite;
+            }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: floralwhite;
+    }
+</style>

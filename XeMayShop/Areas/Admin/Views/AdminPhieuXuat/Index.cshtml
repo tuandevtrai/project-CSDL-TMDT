@@ -1,0 +1,103 @@
+﻿@model IEnumerable<XeMayShop.Models.PhieuXuat>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Danh sách các phiếu xuất</h2>
+            <a href="~/Admin/AdminPhieuXuat/Create">
+                <button type="button" class="btn btn-primary btn-fw">Tạo một phiếu xuất mới</button>
+            </a>
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="color:white">
+                                Mã phiếu xuất
+                            </th>
+                            <th style="color:white">
+                                Nhân viên xuất
+                            </th>
+                            <th style="color:white">
+                                Khách hàng
+                            </th>
+                            <th style="color:white">
+                                Chi nhánh
+                            </th>
+                            <th style="color:white">
+                                Mã xe
+                            </th>
+                            <th style="color:white">
+                                Màu xe
+                            </th>
+                           
+                            <th style="color:white">
+                                Ngày xuất
+                            </th>                          
+                            <th style="color:white">
+                                Thành tiền xuất
+                            </th>
+                            <th style="color:white">
+                                Ghi chú
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaPhieuXuat)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NhanVien.TenNhanVien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KhachHang.TenKhachHang)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ChiNhanh.TenChiNhanh)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MauXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayXuat)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ThanhTienXuat)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GhiChu)
+                                </td>
+                                <td>
+                                    <a href="~/Admin/AdminPhieuXuat/Details/@item.MaPhieuXuat">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                    </a>
+                                    <a href="~/Admin/AdminPhieuXuat/Edit/@item.MaPhieuXuat">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                    </a>
+                                    <a href="~/Admin/AdminPhieuXuat/Delete/@item.MaPhieuXuat">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                    </a>
+                                </td>
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

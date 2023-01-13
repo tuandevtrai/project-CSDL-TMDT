@@ -1,0 +1,79 @@
+﻿@model XeMayShop.Models.NhanVien
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Bạn có thực sự muốn xóa nhân viên này không!!!</h2>
+                <h4 class="card-title">Chi tiết thông tin nhân viên</h4>
+
+                <form class="forms-sample">
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Mã nhân viên</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.MaNhanVien)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên nhân viên</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.TenNhanVien)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Giới tính</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.GioiTinh)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Năm sinh</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.NamSinh)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Điện thoại</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.DienThoai)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Địa chỉ</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.DiaChi)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Chi nhánh trực thuộc</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.ChiNhanh.TenChiNhanh)
+                        </div>
+                    </div>
+                    @if (ViewBag.ErrorInfo != null)
+                    {
+                        <p class="text-danger">@ViewBag.ErrorInfo</p>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button style="width:180px; type="submit" value="Delete" class="btn btn-primary mr-2">Delete</button>
+        </div>
+    }
+
+    <a href="~/Admin/AdminNhanVien/Index">
+        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+    </a>
+</div>

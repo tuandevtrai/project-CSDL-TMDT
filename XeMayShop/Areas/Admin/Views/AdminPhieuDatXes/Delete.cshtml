@@ -1,0 +1,62 @@
+﻿@model XeMayShop.Models.PhieuDatXe
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Bạn có thực sự muốn xóa thông tin phiếu đặt xe này không!!!</h2>
+                <h4 class="card-title">Chi tiết thông tin phiếu đặt xe</h4>
+
+                <form class="forms-sample">
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên người đặt</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.TenNguoiDat)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Điện thoại</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.SDT)
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Tên xe</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.Xe.TenXe)
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Màu xe</label>
+                        <div class="col-sm-9">
+                            @Html.DisplayFor(model => model.Xe.MauXe)
+                        </div>
+                    </div>
+
+                    @if (ViewBag.ErrorInfo != null)
+                    {
+                        <p class="text-danger">@ViewBag.ErrorInfo</p>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button style="width:180px; type="submit" value="Delete" class="btn btn-primary mr-2">Delete</button>
+        </div>
+    }
+
+    <a href="~/Admin/AdminPhieuDatXes/Index">
+        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+    </a>
+</div>

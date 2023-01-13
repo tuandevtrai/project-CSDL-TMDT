@@ -1,0 +1,64 @@
+﻿@model XeMayShop.Models.PhieuNhap
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Chi tiết phiếu nhập </h4>
+
+            <form class="forms-sample">
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Mã phiếu nhập</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.MaPhieuNhap)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nhân viên</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NhanVien.TenNhanVien)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Nhà cung cấp</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NhaCungCap.TenNhaCungCap)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Chi nhánh</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ChiNhanh.TenChiNhanh)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Ngày nhập</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.NgayNhap)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Tổng số xe nhập</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.TongSoXeNhap)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Thành tiền nhập</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.ThanhTienNhap)
+                    </div>
+                </div>
+
+                <a href="~/Admin/AdminPhieuNhap/Index">
+                    <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

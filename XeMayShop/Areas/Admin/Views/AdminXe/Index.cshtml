@@ -1,0 +1,111 @@
+﻿@model IEnumerable<XeMayShop.Models.Xe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Danh sách xe có trong cửa hàng</h2>
+
+            <a href="~/Admin/AdminXe/Create">
+                <button type="button" class="btn btn-primary btn-fw">Tạo một chiếc xe mới</button>
+            </a>
+            <h4>Tìm kiếm xe</h4>   
+
+            <form>
+                <div>
+
+                    <input type="text" class="form-control" placeholder="Mã xe" name="MaXe" style="width:30%; display:inline-block;margin-right:10px">
+
+                    <input type="text" class="form-control" placeholder="Tên xe" name="TenXe" style="width: 30%; display: inline-block; margin-right: 10px">
+                    
+                    <button type="submit" class="btn btn-primary btn-fw" style="margin-top:20px">tìm kiếm</button>
+                </div>
+            </form>
+
+
+
+
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="color:white">
+                                Mã xe
+                            </th>
+                            <th style="color:white">
+                                Tên xe
+                            </th>
+                            <th style="color:white">
+                                Màu xe
+                            </th>
+                            <th style="color:white">
+                                Dòng xe
+                            </th>                           
+                            <th style="color:white">
+                                Đơn giá xe
+                            </th>
+                            <th style="color:white">
+                                Số lượng hiện có
+                            </th>
+                            <th style="color:white">
+                                Hình ảnh
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MauXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DongXe.TenDongXe)
+                                </td>
+                               
+                                <td class="money">
+                                    @Html.DisplayFor(modelItem => item.GiaXe) VND
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuongHienCo)
+                                </td>
+                                <td>
+                                    @{
+                                        var base64 = Convert.ToBase64String(item.HinhAnh);
+                                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                    }
+                                    <img src='@imgSrc' style="width: 150px; height: 150px; border-radius:0%" />
+                                </td>
+                                <td>
+                                    <a href="~/Admin/AdminXe/Details/@item.MaXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                    </a>
+                                    <a href="~/Admin/AdminXe/Edit/@item.MaXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                    </a>
+                                    <a href="~/Admin/AdminXe/Delete/@item.MaXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+

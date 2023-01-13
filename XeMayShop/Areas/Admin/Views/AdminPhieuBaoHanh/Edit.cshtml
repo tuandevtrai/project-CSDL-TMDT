@@ -1,0 +1,81 @@
+﻿@model XeMayShop.Models.PhieuBaoHanh
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm(Html.BeginForm("Edit", "AdminPhieuBaoHanh", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Bạn muốn chỉnh sửa thông tin phiếu bảo hành này???</h4>
+
+                <form class="forms-sample">
+                    <div class="form-group row">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MaPhieuBaoHanh)
+
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Ma phiếu xuất</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.MaPhieuXuat, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MaPhieuXuat, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Mã phiếu xuất</label>
+                        <div class="col-md-9">
+                            @Html.DropDownList("MaPhieuXuat", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaPhieuXuat, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Ngày bắt đầu</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.NgayBatDau, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NgayBatDau, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Thời gian bảo hành</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.ThoiGianBaoHanh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ThoiGianBaoHanh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Số khung</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.SoKhung, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoKhung, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Số sườn</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.SoSuon, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoSuon, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    @if (ViewBag.ErrorInfo != null)
+                    {
+                        <p class="text-danger">@ViewBag.ErrorInfo</p>
+                    }
+
+                    <button style="width:100px; type="submit" value="Save" class="btn btn-primary mr-2">Save</button>
+                    <a href="~/Admin/AdminPhieuBaoHanh/Index">
+                        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+}

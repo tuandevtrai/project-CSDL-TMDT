@@ -1,0 +1,83 @@
+﻿@model IEnumerable<XeMayShop.Models.ChiTietPhieuNhap>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Danh sách các chi tiết phiếu nhập</h2>
+            <a href="~/Admin/AdminChiTietPhieuNhap/Create">
+                <button type="button" class="btn btn-primary btn-fw">Tạo một chi tiết phiếu nhập mới</button>
+            </a>
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="color:white">
+                                Mã phiếu nhập
+                            </th>
+                            <th style="color:white">
+                                Tên xe
+                            </th>
+                            <th style="color:white">
+                                Số lượng nhập
+                            </th>
+                            <th style="color:white">
+                                Đơn giá nhập
+                            </th>
+
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaPhieuNhap)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Xe.TenXe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuongNhap)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DonGiaNhap)
+                                </td>
+
+                                <td>
+                                    <a href="~/Admin/AdminChiTietPhieuNhap/Details/@item.MaPhieuNhap?xe=@item.MaXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-success btn-fw">Details</button>
+                                    </a>
+                                    <a href="~/Admin/AdminChiTietPhieuNhap/Edit/@item.MaPhieuNhap?xe=@item.MaXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-warning btn-fw">Edit</button>
+                                    </a>
+                                    <a href="~/Admin/AdminChiTietPhieuNhap/Delete/@item.MaPhieuNhap?xe=@item.MaXe">
+                                        <button style="min-width:50px" type="button" class="btn btn-outline-danger btn-fw">Delete</button>
+                                    </a>
+                                </td>
+
+
+                                @*<td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.MaPhieuNhap, xe = item.MaXe }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.MaPhieuNhap, xe = item.MaXe }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.MaPhieuNhap, xe = item.MaXe })
+                                </td>*@
+
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

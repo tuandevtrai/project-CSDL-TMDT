@@ -1,0 +1,111 @@
+﻿@model XeMayShop.Models.Xe
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm(Html.BeginForm("Edit", "AdminXe", FormMethod.Post, new { enctype = "multipart/form-data" })))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Bạn muốn chỉnh sửa thông tin xe</h4>
+
+                <form class="forms-sample">
+                    <div class="form-group row">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MaXe)
+                        @Html.HiddenFor(model => model.HinhAnh)
+
+
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Tên xe</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.TenXe, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenXe, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Dòng xe</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownList("MaDongXe", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaDongXe, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Mã chi nhánh</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownList("MaChiNhanh", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaChiNhanh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Màu xe</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.MauXe, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MauXe, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Năm sản xuất</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.NamSanXuat, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NamSanXuat, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Thông tin bảo hành</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.ThongTinBaoHanh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ThongTinBaoHanh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Đơn giá xe</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.GiaXe, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GiaXe, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Số lượng xe hiện có</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.SoLuongHienCo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SoLuongHienCo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Trọng lượng</label>
+                        <div class="col-sm-9">
+                            @Html.EditorFor(model => model.TrongLuong, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TrongLuong, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Hình ảnh xe</label>
+                        <div class="col-sm-9">
+
+                            @{
+                                var base641 = Convert.ToBase64String(Model.HinhAnh);
+                                var imgSrc1 = String.Format("data:image/gif;base64,{0}", base641);
+                            }
+                            <img src='@imgSrc1' style="width: 150px; height: 150px; border-radius:0%" />
+                            <input type="file" name="UploadImage" />
+                            @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                    <button style="width:100px; type="submit" value="Save" class="btn btn-primary mr-2">Save</button>
+                    <a href="~/Admin/AdminXe/Index">
+                        <button type="button" class="btn btn-outline-secondary btn-lg btn-block" style="width:300px; margin-top:40px">Trở về</button>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+}
